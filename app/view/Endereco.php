@@ -6,13 +6,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link href="../../layout/css/main.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8550e0fa2e.js" crossorigin="anonymous"></script>
+    <script src="../../layout/js/main.js"></script>
+    <script src="../../lib/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../../app/data/jquery/jquery-endereco.js"></script>
+
     <title>Hello, world!</title>
   </head>
   <body>
     <br>
     <br>
     <div class="container">
-        <form class="row g-3" action="Contatos.html">
+        <form class="row g-3" action="Contatos.php" method="POST">
             <!-- <div class="col-md-12">
                 <center>
                     <ul id="progressbar">
@@ -38,7 +42,7 @@
             <br>
             <div class="col-md-3">
                 <label for="cep" class="form-label">CEP</label>
-                <input type="text" class="form-control" id="cep">
+                <input type="text" class="form-control" id="cep" onInput="cepFormat(this)">
             </div>
             <div class="col-md-7">
                 <label for="logradouro" class="form-label">Logradouro</label>

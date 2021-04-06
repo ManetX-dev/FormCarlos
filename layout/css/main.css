@@ -6,6 +6,10 @@ table{
     color: #212529;
 }
 
+input{
+    text-transform: uppercase;
+}
+
 .btn-datavence{
     background-color: #79BB00;
     color: #FFFFFF;
@@ -41,4 +45,9 @@ table{
 
 .td-empty{
     text-align: center;
+}
+
+.bg-datavence{
+
+    background-color: #79BB00;
 }

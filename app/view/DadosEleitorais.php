@@ -6,13 +6,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link href="../../layout/css/main.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/8550e0fa2e.js" crossorigin="anonymous"></script>
+    <script src="../../layout/js/main.js"></script>
+    <script src="../../lib/jquery/jquery-3.6.0.min.js"></script>
+    <script src="../../app/data/jquery/jquery-data.js"></script>
+
     <title>Hello, world!</title>
   </head>
   <body>
     <br>
     <br>
     <div class="container">
-        <form class="row g-3" action="DadosPessoais.html">
+        <form class="row g-3" action="../data/process/ProcessaDadosEleitorais.php" method="POST">
             <!-- <div class="col-md-12">
                 <center>
                     <ul id="progressbar">
@@ -27,7 +31,7 @@
                 <h3><i class="fas fa-vote-yea"></i>&nbsp;&nbsp;&nbsp;Dados Eleitorais</h3>
             </div>
             <div class="col-md-2">
-                <button type="submit" class="btn btn-datavence" style="width: 100%;">AVANÇAR&nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
+                <button type="submit" name="next" class="btn btn-datavence" style="width: 100%;">AVANÇAR&nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right"></i></button>
             </div>
             <div class="col-md-12">
                 <hr>
@@ -35,28 +39,42 @@
             <br>
             <div class="col-md-3">
                 <label for="titulo" class="form-label">Titulo Eleitoral</label>
-                <input type="text" class="form-control" id="titulo">
+                <input type="text" class="form-control" id="titulo" name="titulo" onInput="onlyNumbers(this, 12)" required>
             </div>
             <div class="col-md-2">
                 <label for="uf" class="form-label">UF</label>
-                <select id="uf" class="form-select" aria-label="Default select example">
-                    <option value="1">RN</option>
-                    <option value="2">SP</option>
-                    <option value="3">RJ</option>
+                <select id="uf" class="form-select" aria-label="Default select example" required>
+                    <?php
+                        $ufs = array(
+                            'AC' => 'AC', 'AL' => 'AL', 'AP' => 'AP', 'AM' => 'AM', 
+                            'BA' => 'BA', 'CE' => 'CE', 'DF' => 'DF', 'ES' => 'ES', 
+                            'GO' => 'GO', 'MA' => 'MA', 'MT' => 'MT', 'MS' => 'MS', 
+                            'MG' => 'MG', 'PA' => 'PA', 'PB' => 'PB', 'PR' => 'PR', 
+                            'PE' => 'PE', 'PI' => 'PI', 'RJ' => 'RJ', 'RN' => 'RN', 
+                            'RS' => 'RS', 'RO' => 'RO', 'RR' => 'RR', 'SC' => 'SC', 
+                            'SP' => 'SP', 'SE' => 'SE', 'TO' => 'TO'
+                        );
+
+                        foreach($ufs as $uf => $value) {
+                            echo '<option value="'.$value.'">'.$value.' </option>';
+                        }
+                    ?> 
                 </select>
             </div>
             <div class="col-md-3">
                 <label for="municipio" class="form-label">Município do Título</label>
-                <input type="text" class="form-control" id="municipio">
+                <select id="municipio" name="municipio" class="form-select" aria-label="Default select example" required>
+                </select>
             </div>
             <div class="col-md-2">
                 <label for="zona" class="form-label">Zona</label>
-                <input type="text" class="form-control" id="zona">
+                <input type="text" class="form-control" id="zona" name="zona" onInput="onlyNumbers(this, 4)" required>
             </div>
             <div class="col-md-2">
                 <label for="secao" class="form-label">Seção</label>
-                <input type="text" class="form-control" id="secao">
+                <input type="text" class="form-control" id="secao" name="secao" onInput="onlyNumbers(this, 4)" required>
             </div>
+            <p id="test"></p>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
